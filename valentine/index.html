@@ -675,10 +675,9 @@
         const reactionGifs = [
             'https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif',
             'https://media.giphy.com/media/BEob5qwFkSJ7G/giphy.gif',
-            'https://media.giphy.com/media/14urMYvAEHYJ6w/giphy.gif',
             'https://media.giphy.com/media/l0HFkA6omUyjVYqw8/giphy.gif',
             'https://media.giphy.com/media/mCRJDo24UvJMA/giphy.gif',
-            'https://media.giphy.com/media/VbawWIGNtKYwOFXkDp/giphy.gif'
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGR5Ym9jMWJ5Zm9jMWJ5Zm9jMWJ5Zm9jMWJ5Zm9jMWJ5Zm9jMWJ5Zm8mZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/L95W4wv8nnb9K/giphy.gif',
         ];
 
         // Music control
@@ -770,15 +769,21 @@
         noBtn.addEventListener('mouseover', function(e) {
             // Switch to absolute positioning so it can move around
             noBtn.style.position = 'absolute';
+            noBtn.style.transition = 'all 0.05s ease';
 
             const containerRect = buttonsContainer.getBoundingClientRect();
             const btnRect = noBtn.getBoundingClientRect();
             
+            // Jump far away from cursor for a bigger dodge
             const maxX = containerRect.width - btnRect.width;
             const maxY = containerRect.height - btnRect.height;
             
-            const randomX = (Math.random() - 0.5) * maxX;
-            const randomY = (Math.random() - 0.5) * maxY;
+            let randomX, randomY;
+            // Ensure it always jumps a good distance away
+            do {
+                randomX = (Math.random() - 0.5) * maxX * 1.5;
+                randomY = (Math.random() - 0.5) * maxY * 1.5;
+            } while (Math.abs(randomX) < 50 && Math.abs(randomY) < 50);
             
             noBtn.style.left = randomX + 'px';
             noBtn.style.top = randomY + 'px';
