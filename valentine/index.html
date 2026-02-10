@@ -239,7 +239,7 @@
             background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
             color: #888;
             position: relative;
-            transition: all 0.15s ease;
+            transition: all 0.4s ease;
         }
 
         #noBtn:hover {
@@ -471,6 +471,294 @@
             to { transform: scale(1); opacity: 1; }
         }
 
+        .explosion-particle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: explodeParticle 1s ease-out forwards;
+        }
+
+        @keyframes explodeParticle {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .crying-emoji {
+            position: fixed;
+            font-size: 3em;
+            pointer-events: none;
+            animation: cryingFloat 2s ease-out forwards;
+            z-index: 1000;
+        }
+
+        @keyframes cryingFloat {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px) rotate(360deg) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .floating-text {
+            position: fixed;
+            font-size: 2em;
+            font-weight: bold;
+            color: #e91e63;
+            pointer-events: none;
+            animation: floatUp 2s ease-out forwards;
+            z-index: 1000;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-150px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes screenShake {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            10% { transform: translate(-10px, -10px) rotate(-1deg); }
+            20% { transform: translate(10px, 10px) rotate(1deg); }
+            30% { transform: translate(-10px, 10px) rotate(-1deg); }
+            40% { transform: translate(10px, -10px) rotate(1deg); }
+            50% { transform: translate(-10px, -10px) rotate(-1deg); }
+            60% { transform: translate(10px, 10px) rotate(1deg); }
+            70% { transform: translate(-10px, 10px) rotate(-1deg); }
+            80% { transform: translate(10px, -10px) rotate(1deg); }
+            90% { transform: translate(-10px, -10px) rotate(-1deg); }
+        }
+
+        .screen-shake {
+            animation: screenShake 0.5s ease-in-out;
+        }
+
+        @keyframes colorPulse {
+            0%, 100% { filter: hue-rotate(0deg) brightness(1); }
+            50% { filter: hue-rotate(30deg) brightness(1.2); }
+        }
+
+        .color-pulse {
+            animation: colorPulse 0.5s ease-in-out;
+        }
+
+        .heart-overlay {
+            position: fixed;
+            font-size: 5em;
+            pointer-events: none;
+            z-index: 999;
+            animation: heartOverlay 1.5s ease-out forwards;
+        }
+
+        @keyframes heartOverlay {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        /* Cursor trail effect */
+        .cursor-heart {
+            position: fixed;
+            pointer-events: none;
+            font-size: 20px;
+            animation: cursorFloat 2s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes cursorFloat {
+            0% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(0) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        /* Rose petal effect */
+        .rose-petal {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            font-size: 20px;
+            pointer-events: none;
+            animation: petalFall 8s linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes petalFall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg) translateX(100px);
+                opacity: 0.3;
+            }
+        }
+
+        /* Love meter */
+        .love-meter {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 30px;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            animation: meterAppear 0.5s ease-out;
+        }
+
+        @keyframes meterAppear {
+            from { transform: translateX(-50%) translateY(-50px); opacity: 0; }
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+
+        .love-meter-label {
+            font-size: 0.9em;
+            color: #e91e63;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .love-meter-bar {
+            width: 250px;
+            height: 25px;
+            background: linear-gradient(90deg, #f0f0f0, #fce4ec);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .love-meter-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #f093fb, #f5576c);
+            border-radius: 15px;
+            transition: width 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            width: 0%;
+            box-shadow: 0 0 15px rgba(245, 87, 108, 0.6);
+        }
+
+        .love-meter-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.8em;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        /* Growing rose */
+        .growing-rose {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            font-size: 3em;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            filter: grayscale(100%);
+            opacity: 0.3;
+            z-index: 100;
+        }
+
+        .growing-rose.blooming {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.5) rotate(360deg);
+        }
+
+        /* Camera flash */
+        .camera-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+            pointer-events: none;
+            animation: flashEffect 0.5s ease-out;
+        }
+
+        @keyframes flashEffect {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Achievement popup */
+        .achievement {
+            position: fixed;
+            top: 80px;
+            right: -400px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            animation: achievementSlide 4s ease-in-out forwards;
+            min-width: 300px;
+        }
+
+        @keyframes achievementSlide {
+            0%, 100% { right: -400px; }
+            15%, 85% { right: 20px; }
+        }
+
+        .achievement-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .achievement-desc {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        /* Typewriter cursor */
+        .typewriter {
+            display: inline;
+            border-right: 3px solid #e91e63;
+            animation: blinkCursor 0.7s infinite;
+        }
+
+        @keyframes blinkCursor {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #e91e63; }
+        }
+
         @media (max-width: 700px) {
             .container {
                 padding: 40px 30px;
@@ -588,6 +876,9 @@
         🎵
     </div>
 
+    <!-- Growing Rose -->
+    <div class="growing-rose" id="growingRose">🌹</div>
+
     <!-- Audio element for background music -->
     <audio id="bgMusic" loop>
         <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3" type="audio/mpeg">
@@ -671,6 +962,9 @@
         let noClickCount = 0;
         let yesBtnSize = 1;
         let musicPlaying = false;
+        let cursorTrailActive = true;
+        let lastCursorTime = 0;
+        let achievementsShown = [];
 
         const reactionGifs = [
             'https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif',
@@ -704,6 +998,25 @@
             }
         });
 
+        const noButtonTexts = [
+            "No",
+            "Nope! 😏",
+            "Still No 😎",
+            "Not Today! 🙃",
+            "Nice Try 😜",
+            "Nah Fam 🤪",
+            "Error 404 🤖",
+            "Mission Failed 😂",
+            "Try Harder 💪",
+            "Almost Got Me 😅",
+            "Escape! 🏃",
+            "Can't Touch This 🕺",
+            "Not Clickable! 🚫",
+            "Button.exe Stopped 💻",
+            "I Quit! 👋",
+            "*poof* 💨"
+        ];
+
         const noMessages = [
             "Wait... are you absolutely sure? 🥺",
             "But we're perfect together! 😢",
@@ -721,6 +1034,19 @@
             "I'll do the dishes for THREE months! 🧽",
             "The 'No' button is literally crying! 😭",
             "Fine! You win ALL future arguments! 🏳️"
+        ];
+
+        const floatingTexts = [
+            "Please! 💕",
+            "Don't go! 💔",
+            "Come back! 🥺",
+            "Say YES! ✨",
+            "I love you! 💖",
+            "Choose me! 💝",
+            "We're meant to be! 💑",
+            "You know it's true! 💕",
+            "Give us a chance! 🌹",
+            "You + Me = ❤️"
         ];
 
         const memoryMessages = [
@@ -749,6 +1075,102 @@
             setTimeout(function() { heart.remove(); }, 10000);
         }
 
+        // Create cursor trail hearts
+        function createCursorHeart(x, y) {
+            const heart = document.createElement('div');
+            heart.classList.add('cursor-heart');
+            const hearts = ['💕', '💖', '💗', '✨', '⭐'];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            document.body.appendChild(heart);
+            setTimeout(function() { heart.remove(); }, 2000);
+        }
+
+        // Create rose petals
+        function createRosePetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('rose-petal');
+            const petals = ['🌸', '🌺', '🌹', '🥀', '💮'];
+            petal.innerHTML = petals[Math.floor(Math.random() * petals.length)];
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.animationDuration = (Math.random() * 5 + 6) + 's';
+            petal.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(petal);
+            setTimeout(function() { petal.remove(); }, 12000);
+        }
+
+        // Update love meter
+        function updateLoveMeter() {
+            const meter = document.getElementById('loveMeter');
+            const fill = document.getElementById('loveMeterFill');
+            const text = document.getElementById('loveMeterText');
+            
+            if (noClickCount === 1) {
+                meter.style.display = 'block';
+            }
+            
+            const percentage = Math.min(100, (noClickCount / 16) * 100);
+            fill.style.width = percentage + '%';
+            text.textContent = Math.round(percentage) + '%';
+            
+            if (percentage >= 100) {
+                text.textContent = 'DESTINY! 💕';
+            }
+        }
+
+        // Update growing rose
+        function updateGrowingRose() {
+            const rose = document.getElementById('growingRose');
+            const growthStage = Math.min(1, noClickCount / 10);
+            rose.style.transform = 'scale(' + (1 + growthStage * 0.8) + ')';
+            rose.style.filter = 'grayscale(' + ((1 - growthStage) * 100) + '%)';
+            rose.style.opacity = 0.3 + (growthStage * 0.7);
+            
+            if (noClickCount >= 10) {
+                rose.classList.add('blooming');
+            }
+        }
+
+        // Show achievement
+        function showAchievement(title, description) {
+            if (achievementsShown.includes(title)) return;
+            achievementsShown.push(title);
+            
+            const achievement = document.createElement('div');
+            achievement.classList.add('achievement');
+            achievement.innerHTML = '<div class="achievement-title">🏆 ' + title + '</div><div class="achievement-desc">' + description + '</div>';
+            document.body.appendChild(achievement);
+            setTimeout(function() { achievement.remove(); }, 4000);
+        }
+
+        // Camera flash effect
+        function cameraFlash() {
+            const flash = document.createElement('div');
+            flash.classList.add('camera-flash');
+            document.body.appendChild(flash);
+            setTimeout(function() { flash.remove(); }, 500);
+        }
+
+        // Typewriter effect
+        function typewriterEffect(element, text, speed = 50) {
+            element.innerHTML = '';
+            let i = 0;
+            const span = document.createElement('span');
+            span.classList.add('typewriter');
+            element.appendChild(span);
+            
+            const timer = setInterval(function() {
+                if (i < text.length) {
+                    span.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(timer);
+                    span.classList.remove('typewriter');
+                }
+            }, speed);
+        }
+
         // Create sparkles
         function createSparkle(x, y) {
             for (let i = 0; i < 15; i++) {
@@ -763,13 +1185,80 @@
             }
         }
 
+        // Create explosion particles
+        function createExplosion(x, y) {
+            const colors = ['#ff0000', '#ff69b4', '#ff1493', '#ffc0cb', '#ff00ff'];
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('explosion-particle');
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                const angle = (Math.PI * 2 * i) / 20;
+                const distance = 50 + Math.random() * 50;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+                
+                document.body.appendChild(particle);
+                setTimeout(function() { particle.remove(); }, 1000);
+            }
+        }
+
+        // Create crying emojis
+        function createCryingEmoji(x, y) {
+            const emojis = ['😢', '😭', '🥺', '💔', '😿'];
+            const emoji = document.createElement('div');
+            emoji.classList.add('crying-emoji');
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = (x - 25) + 'px';
+            emoji.style.top = (y - 25) + 'px';
+            document.body.appendChild(emoji);
+            setTimeout(function() { emoji.remove(); }, 2000);
+        }
+
+        // Create floating text
+        function createFloatingText(text, x, y) {
+            const floatingText = document.createElement('div');
+            floatingText.classList.add('floating-text');
+            floatingText.textContent = text;
+            floatingText.style.left = (x - 50) + 'px';
+            floatingText.style.top = y + 'px';
+            document.body.appendChild(floatingText);
+            setTimeout(function() { floatingText.remove(); }, 2000);
+        }
+
+        // Create heart overlay
+        function createHeartOverlay() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-overlay');
+            heart.textContent = '💕';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = Math.random() * window.innerHeight + 'px';
+            document.body.appendChild(heart);
+            setTimeout(function() { heart.remove(); }, 1500);
+        }
+
         setInterval(createHeart, 200);
+        setInterval(createRosePetal, 800);
+
+        // Cursor trail effect
+        document.addEventListener('mousemove', function(e) {
+            const now = Date.now();
+            if (cursorTrailActive && now - lastCursorTime > 100) {
+                createCursorHeart(e.clientX, e.clientY);
+                lastCursorTime = now;
+            }
+        });
 
         // Enhanced No button behavior
         noBtn.addEventListener('mouseover', function(e) {
             // Switch to absolute positioning so it can move around
             noBtn.style.position = 'absolute';
-            noBtn.style.transition = 'all 0.05s ease';
+            noBtn.style.transition = 'all 0.5s ease';
 
             const containerRect = buttonsContainer.getBoundingClientRect();
             const btnRect = noBtn.getBoundingClientRect();
@@ -794,53 +1283,128 @@
         noBtn.addEventListener('click', function(e) {
             noClickCount++;
             
-            // Show funny message
+            // Update growing rose
+            updateGrowingRose();
+            
+            // Show achievements at milestones
+            if (noClickCount === 3) {
+                showAchievement('Persistent Pursuer', 'You\'re not giving up! 💪');
+            } else if (noClickCount === 5) {
+                showAchievement('Heart Collector', 'Collecting all the hearts! 💕');
+            } else if (noClickCount === 8) {
+                showAchievement('Love Detective', 'Investigating every option! 🔍');
+            } else if (noClickCount === 12) {
+                showAchievement('Romance Expert', 'You know what you want! 💖');
+            } else if (noClickCount === 15) {
+                showAchievement('Destiny Awaits', 'The universe is ready! ✨');
+            }
+            
+            // Change the No button text dynamically
+            if (noClickCount < noButtonTexts.length) {
+                noBtn.textContent = noButtonTexts[noClickCount];
+            }
+            
+            // Show funny message with typewriter effect
             if (noClickCount <= noMessages.length) {
-                noText.textContent = noMessages[noClickCount - 1];
-                noText.style.animation = 'none';
-                setTimeout(function() { noText.style.animation = 'fadeInText 0.5s ease-in'; }, 10);
+                typewriterEffect(noText, noMessages[noClickCount - 1], 30);
             }
 
-            // Update memory text
+            // Update memory text with typewriter effect
             if (noClickCount <= memoryMessages.length) {
-                memoryText.innerHTML = memoryMessages[noClickCount - 1];
+                setTimeout(function() {
+                    typewriterEffect(memoryText, memoryMessages[noClickCount - 1], 25);
+                }, 500);
             }
 
-            // Make Yes button HUGE
-            yesBtnSize += 0.18;
+            // Create explosion effect
+            createExplosion(e.clientX, e.clientY);
+            
+            // Create crying emojis
+            for (let i = 0; i < 3; i++) {
+                setTimeout(function() {
+                    createCryingEmoji(
+                        e.clientX + (Math.random() - 0.5) * 100,
+                        e.clientY + (Math.random() - 0.5) * 100
+                    );
+                }, i * 150);
+            }
+
+            // Create floating text
+            if (noClickCount < floatingTexts.length) {
+                createFloatingText(floatingTexts[noClickCount - 1], e.clientX, e.clientY);
+            }
+
+            // Create heart overlays
+            for (let i = 0; i < 2; i++) {
+                setTimeout(createHeartOverlay, i * 200);
+            }
+
+            // Screen shake effect
+            document.body.classList.add('screen-shake');
+            setTimeout(function() {
+                document.body.classList.remove('screen-shake');
+            }, 500);
+
+            // Color pulse effect on container
+            mainContainer.classList.add('color-pulse');
+            setTimeout(function() {
+                mainContainer.classList.remove('color-pulse');
+            }, 500);
+
+            // Make Yes button HUGE with extra effects
+            yesBtnSize += 0.2;
             yesBtn.style.transform = 'scale(' + yesBtnSize + ')';
             yesBtn.style.zIndex = '10';
+            
+            // Add pulsing to Yes button at later stages
+            if (noClickCount >= 8) {
+                yesBtn.style.animation = 'pulseGlow 1s infinite, titleBounce 1s ease-in-out infinite';
+            }
 
             // Make No button tiny and sad
-            const newNoBtnSize = Math.max(0.25, 1 - (noClickCount * 0.09));
-            noBtn.style.transform = 'scale(' + newNoBtnSize + ') rotate(' + (noClickCount * 20) + 'deg)';
+            const newNoBtnSize = Math.max(0.2, 1 - (noClickCount * 0.1));
+            noBtn.style.transform = 'scale(' + newNoBtnSize + ') rotate(' + (noClickCount * 25) + 'deg)';
             
-            // Change No button color
-            const grayness = Math.min(220, 160 + (noClickCount * 6));
+            // Change No button color - make it grayer and sadder
+            const grayness = Math.min(230, 160 + (noClickCount * 7));
             noBtn.style.background = 'linear-gradient(135deg, rgb(' + grayness + ', ' + grayness + ', ' + grayness + '), rgb(' + (grayness + 20) + ', ' + (grayness + 20) + ', ' + (grayness + 20) + '))';
+            noBtn.style.opacity = Math.max(0.3, 1 - (noClickCount * 0.05));
 
-            // Move No button
+            // Move No button more dramatically
             const containerRect = buttonsContainer.getBoundingClientRect();
-            const randomX = (Math.random() - 0.5) * containerRect.width * 0.9;
-            const randomY = (Math.random() - 0.5) * containerRect.height * 0.9;
+            const randomX = (Math.random() - 0.5) * containerRect.width * 1.2;
+            const randomY = (Math.random() - 0.5) * containerRect.height * 1.2;
             
             noBtn.style.left = randomX + 'px';
             noBtn.style.top = randomY + 'px';
 
-            // Speed up escape
-            if (noClickCount >= 7) {
-                noBtn.style.transition = 'all 0.1s ease';
+            // Speed up escape progressively (but keep it slow for romantic effect)
+            if (noClickCount >= 5) {
+                noBtn.style.transition = 'all 0.4s ease';
+            }
+            if (noClickCount >= 8) {
+                noBtn.style.transition = 'all 0.3s ease';
             }
             if (noClickCount >= 12) {
-                noBtn.style.transition = 'all 0.05s ease';
+                noBtn.style.transition = 'all 0.25s ease';
             }
 
-            // Make No button disappear
+            // After many clicks, make No button click trigger Yes
+            if (noClickCount >= 15) {
+                noBtn.style.cursor = 'not-allowed';
+            }
+            
             if (noClickCount >= 16) {
+                // Transform No button into Yes button
                 noBtn.style.display = 'none';
-                noText.textContent = "The 'No' button GAVE UP! There's only YES now! 😉💕";
-                yesBtn.textContent = "YES! (The ONLY option) 💖✨";
-                memoryText.innerHTML = "You know we're meant to be together! 💑💕";
+                noText.innerHTML = "<strong>The 'No' button REFUSED to let you say no! 😂💕</strong><br>It says you two are PERFECT together!";
+                yesBtn.textContent = "YES! 💖✨ (Destiny's Choice)";
+                memoryText.innerHTML = "Even the button knows we're meant to be! 💑💕<br>The universe has spoken! 🌟";
+                
+                // Extra celebration
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(createHeartOverlay, i * 100);
+                }
             }
 
             // Show reaction GIF
@@ -862,29 +1426,40 @@
             // Create sparkles at click
             createSparkle(e.clientX, e.clientY);
 
-            // More hearts when clicking no
-            for (let i = 0; i < 5; i++) {
-                setTimeout(createHeart, i * 100);
+            // Flood with hearts when clicking no
+            const heartCount = Math.min(15, 5 + noClickCount);
+            for (let i = 0; i < heartCount; i++) {
+                setTimeout(createHeart, i * 50);
             }
         });
 
         // Yes button celebration
         yesBtn.addEventListener('click', function() {
-            celebration.style.display = 'flex';
+            // Camera flash effect
+            cameraFlash();
             
-            // Change music to celebration
-            bgMusic.src = 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Algorithms.mp3';
-            bgMusic.play().catch(e => console.log('Music play prevented'));
-            musicControl.textContent = '🔊';
-            musicPlaying = true;
+            // Final achievement
+            setTimeout(function() {
+                showAchievement('💝 TRUE LOVE UNLOCKED 💝', 'You said YES! Forever starts now! 🎉');
+            }, 600);
             
-            createMassiveFireworks();
-            createConfetti();
-            
-            // Flood with hearts
-            for (let i = 0; i < 150; i++) {
-                setTimeout(createHeart, i * 30);
-            }
+            setTimeout(function() {
+                celebration.style.display = 'flex';
+                
+                // Change music to celebration
+                bgMusic.src = 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Algorithms.mp3';
+                bgMusic.play().catch(e => console.log('Music play prevented'));
+                musicControl.textContent = '🔊';
+                musicPlaying = true;
+                
+                createMassiveFireworks();
+                createConfetti();
+                
+                // Flood with hearts
+                for (let i = 0; i < 150; i++) {
+                    setTimeout(createHeart, i * 30);
+                }
+            }, 500);
         });
 
         // Fireworks
