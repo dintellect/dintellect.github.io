@@ -277,6 +277,7 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            overflow-y: auto;
             animation: celebrationFade 0.8s ease-in;
         }
 
@@ -529,7 +530,7 @@
 
     <!-- Audio element for background music -->
     <audio id="bgMusic" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_3d9e1c7fa8.mp3" type="audio/mpeg">
+        <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3" type="audio/mpeg">
     </audio>
 
     <div class="container" id="mainContainer">
@@ -586,15 +587,11 @@
             <p>You've made me the happiest person! 💖</p>
             <p>Happy Valentine's Day, my beautiful Adi! 🌹</p>
             
-            <div class="gif-container">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWJ5Nm5vM2x5Yjh0MnA5aGRlOWJ5NXJ6Zm9jMWJ5Zm9jMWJ5Zm9jMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="Love" class="love-gif celebration-love-gif">
-            </div>
-
-            <div style="font-size: 3em; margin-top: 20px; animation: emojiPulse 1.5s infinite;">
+            <div style="font-size: 3em; margin-top: 50px; animation: emojiPulse 1.5s infinite;">
                 💑
             </div>
 
-            <p style="font-size: 2em; margin-top: 30px; font-style: italic;">
+            <p style="font-size: 2em; margin-top: 40px; font-style: italic;">
                 I love you more than words can say! 💝
             </p>
         </div>
@@ -808,7 +805,7 @@
             celebration.style.display = 'flex';
             
             // Change music to celebration
-            bgMusic.src = 'https://cdn.pixabay.com/download/audio/2022/01/18/audio_4de3819bd5.mp3';
+            bgMusic.src = 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Algorithms.mp3';
             bgMusic.play().catch(e => console.log('Music play prevented'));
             musicControl.textContent = '🔊';
             musicPlaying = true;
